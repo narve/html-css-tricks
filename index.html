@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+        :has(#rating-1:checked) section li.rating-1 {
+            display: block;
+        }
+        :has(#rating-2:checked) section li.rating-2 {
+            display: block;
+        }
+
+        section li {
+            display: none;
+        }
+
+
+        form .warning {
+            display:none;
+        }
+
+        form:has(input[type="email"]:invalid) .warning {
+            display: block;
+            color: red;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<form>
+    <fieldset>
+        <legend>Filter items</legend>
+    <label>Rating 1
+    <input id="rating-1" name="rating" type="checkbox" value="1" checked>
+    </label>
+    <label>Rating 2
+    <input id="rating-2" name="rating" type="checkbox" value="2" checked>
+    </label>
+    </fieldset>
+</form>
+
+<section>
+<ul>
+    <li class="rating-1">ITEM 1 with rating 1</li>
+    <li class="rating-2">ITEM 2 with rating 2</li>
+    <li class="rating-2">ITEM 3 with rating 2</li>
+    <li class="rating-2">ITEM 4 with rating 1</li>
+    <li class="rating-2">ITEM 5 with rating 2</li>
+</ul>
+</section>
+
+<form>
+
+
+    <fieldset>
+        <legend>Displaying invalid messages close to submit button</legend>
+    <label>E-mail
+    <input type="email" id="email">
+    </label>
+
+    ...
+
+
+
+    <p>
+        masse innhold her...
+    </p>
+
+
+
+    <p>
+        masse innhold her...
+    </p>
+
+
+
+    <p>
+        masse innhold her...
+    </p>
+
+
+
+    <p>
+        masse innhold her...
+    </p>
+
+
+
+    <p>
+        masse innhold her...
+    </p>
+
+
+
+    <p>
+        masse innhold her...
+    </p>
+
+
+    <p>
+        masse innhold her...
+    </p>
+
+
+    <p>
+        masse innhold her...
+    </p>
+
+    <p>
+        masse innhold her...
+    </p>
+
+    <p>
+        masse innhold her...
+    </p>
+
+    <div class="email warning">Please fill in your <a href="#input-email">email</a></div>
+    <input type="submit">
+    </fieldset>
+</form>
+
+
+</body>
+</html>
