@@ -5,10 +5,14 @@
     <title>Title</title>
 
     <style>
+        label {
+            display: block;
+        }
 
         :has(#rating-1:checked) section li.rating-1 {
             display: block;
         }
+
         :has(#rating-2:checked) section li.rating-2 {
             display: block;
         }
@@ -19,39 +23,72 @@
 
 
         form .warning {
-            display:none;
+            display: none;
         }
 
-        form:has(input[type="email"]:invalid) .warning {
+        form:has(#input-email:invalid) .email {
             display: block;
             color: red;
+        }
+
+        form:has(#input-age:invalid) .age {
+            display: block;
+            color: red;
+        }
+
+
+        :root:has(#scheme1:checked) {
+            --color: red;
+        }
+
+        :root:has(#scheme2:checked) {
+            --color: yellow;
+        }
+
+        .mutable {
+            color: var(--color);
         }
 
     </style>
 
 </head>
 <body>
-
-<form>
-    <fieldset>
-        <legend>Filter items</legend>
-    <label>Rating 1
-    <input id="rating-1" name="rating" type="checkbox" value="1" checked>
-    </label>
-    <label>Rating 2
-    <input id="rating-2" name="rating" type="checkbox" value="2" checked>
-    </label>
-    </fieldset>
-</form>
-
 <section>
-<ul>
-    <li class="rating-1">ITEM 1 with rating 1</li>
-    <li class="rating-2">ITEM 2 with rating 2</li>
-    <li class="rating-2">ITEM 3 with rating 2</li>
-    <li class="rating-2">ITEM 4 with rating 1</li>
-    <li class="rating-2">ITEM 5 with rating 2</li>
-</ul>
+    <h1>Mutable vars</h1>
+    <form>
+        <label>Red
+            <input id="scheme1" name="scheme" type="radio">
+        </label>
+        <label>Yellow
+            <input id="scheme2" name="scheme" type="radio">
+        </label>
+        <label>None
+            <input id="scheme3" name="scheme" type="radio">
+        </label>
+    </form>
+    <p class="mutable">Some text </p>
+</section>
+<section>
+    <h1>Filtering</h1>
+    <form>
+        <fieldset>
+            <legend>Filter items</legend>
+            <label>Rating 1
+                <input id="rating-1" name="rating" type="checkbox" value="1" checked>
+            </label>
+            <label>Rating 2
+                <input id="rating-2" name="rating" type="checkbox" value="2" checked>
+            </label>
+        </fieldset>
+    </form>
+
+    <ul>
+        <li class="rating-1">ITEM 1 with rating 1</li>
+        <li class="rating-2">ITEM 2 with rating 2</li>
+        <li class="rating-2">ITEM 3 with rating 2</li>
+        <li class="rating-2">ITEM 4 with rating 1</li>
+        <li class="rating-2">ITEM 5 with rating 2</li>
+    </ul>
 </section>
 
 <form>
@@ -59,68 +96,44 @@
 
     <fieldset>
         <legend>Displaying invalid messages close to submit button</legend>
-    <label>E-mail
-    <input type="email" id="email">
-    </label>
+        <label>E-mail
+            <input type="email" id="input-email">
+        </label>
+        <label>Age
+            <input type="number" id="input-age" min="10" max="100" value="10">
+        </label>
 
-    ...
-
-
-
-    <p>
-        masse innhold her...
-    </p>
+        ...
 
 
-
-    <p>
-        masse innhold her...
-    </p>
-
+        <p>
+            more content...
+        </p>
 
 
-    <p>
-        masse innhold her...
-    </p>
+        <p>
+            more content...
+        </p>
 
 
-
-    <p>
-        masse innhold her...
-    </p>
-
+        <p>
+            more content...
+        </p>
 
 
-    <p>
-        masse innhold her...
-    </p>
+        <p>
+            more content...
+        </p>
 
 
-
-    <p>
-        masse innhold her...
-    </p>
-
-
-    <p>
-        masse innhold her...
-    </p>
+        <p>
+            more content...
+        </p>
 
 
-    <p>
-        masse innhold her...
-    </p>
-
-    <p>
-        masse innhold her...
-    </p>
-
-    <p>
-        masse innhold her...
-    </p>
-
-    <div class="email warning">Please fill in your <a href="#input-email">email</a></div>
-    <input type="submit">
+        <div class="email warning">Please fill in your <a href="#input-email">email</a></div>
+        <div class="age warning">Please fill in your <a href="#input-age">age</a></div>
+        <input type="submit">
     </fieldset>
 </form>
 
