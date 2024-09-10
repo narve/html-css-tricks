@@ -9,12 +9,19 @@
             display: block;
         }
 
-        :has(#rating-1:checked) section li.rating-1 {
+        :has(#rating-1:checked) section li:has(x-rating[r="1"]) {
             display: block;
         }
 
-        :has(#rating-2:checked) section li.rating-2 {
+        :has(#rating-2:checked) section li:has(x-rating[r="2"]) {
             display: block;
+        }
+
+        x-rating[r="1"]::before {
+            content: "✪"
+        }
+        x-rating[r="2"]::before {
+            content: "✪✪"
         }
 
         section li {
@@ -55,6 +62,12 @@
 <body>
 <section>
     <h1>Mutable vars</h1>
+    <p>
+        Change the color scheme by selecting a radio button.
+        This will affect the whole page by changing the value of a CSS variable
+        (the variable is only used one place in this example).
+
+    </p>
     <form>
         <label>Red
             <input id="scheme1" name="scheme" type="radio">
@@ -83,11 +96,11 @@
     </form>
 
     <ul>
-        <li class="rating-1">ITEM 1 with rating 1</li>
-        <li class="rating-2">ITEM 2 with rating 2</li>
-        <li class="rating-2">ITEM 3 with rating 2</li>
-        <li class="rating-2">ITEM 4 with rating 1</li>
-        <li class="rating-2">ITEM 5 with rating 2</li>
+        <li>ITEM 1 with rating 1 <x-rating r="1" /></li>
+        <li>ITEM 2 with rating 2 <x-rating r="2" /></li>
+        <li>ITEM 3 with rating 2 <x-rating r="2" /></li>
+        <li>ITEM 4 with rating 1 <x-rating r="1" /></li>
+        <li>ITEM 5 with rating 2 <x-rating r="2" /></li>
     </ul>
 </section>
 
@@ -96,6 +109,11 @@
 
     <fieldset>
         <legend>Displaying invalid messages close to submit button</legend>
+        <p>
+            Try entering an invalid e-mail, like <em>alice@</em>,
+            and an invalid age, like <em>5</em>,
+            and valid entries (like age 10 and a valid e-mail).
+        </p>
         <label>E-mail
             <input type="email" id="input-email">
         </label>
